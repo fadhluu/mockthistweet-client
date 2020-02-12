@@ -18,7 +18,7 @@ class Bot:
         return self.auth
 
     def get_profile(self):
-        user = self.api.get_user(screen_name="mockthistweet")
+        user = self.api.me()
         return user
 
     # write your method here
