@@ -1,0 +1,23 @@
+{% load bootstrap4 %}
+{% bootstrap_css %}
+
+<div class="container">
+  <div class="row h-100">
+    <div class="col-4 mx-auto my-auto">
+      <div class="card bg-primary">
+        <div class="card-header text-white text-center">
+          {{user_profile.name}} {{user_profile.screen_name}}
+        </div>
+        <div class="card-body text-center">
+          <div class="card-title">
+            <img src={{user_profile.profile_image_url}} class="card-img-top" style="border-radius: 100%; width: 150px">
+          </div>
+          <p class="card-text text-white">{{user_profile.description}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <h1 class="text-center text-primary">Coming Soon</h1>
+    </div>
+  </div>
+</div>
