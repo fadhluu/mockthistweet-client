@@ -4,7 +4,6 @@ from .db_mongo import Database
 from .forms.new_tweet import NewTweet
 from django.http import HttpResponse
 
-# Create your views here.
 
 db = Database()
 db.connect_db("mockthistweet_test")
@@ -25,11 +24,22 @@ def index(request):
     context = {
         # 'mention_timeline': mention_timeline,
         'user_profile': user_profile,
-        'form': NewTweet(),
     }
     return render(request, 'client/index.html', context)
 
 
 def new_tweet(request):
-    bot.api.update_status(status=request.POST['new_tweet'])
-    return HttpResponse('Update tweet success')
+    if request.method == 'GET':
+        context = {
+            'form': NewTweet()
+        }
+    else:
+        tweet = request.POST['new_tweet']
+        context = {
+            'form': NewTweet(),
+            'msg': 'Tweet Updated',
+            'tweet': tweet
+        }
+        print(request.POST, context['msg'])
+
+    return render(request, 'client/new_tweet.html', context)

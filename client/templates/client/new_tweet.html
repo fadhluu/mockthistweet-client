@@ -1,0 +1,30 @@
+{% load bootstrap4 %} {% bootstrap_css %}
+
+<div class="container">
+  <div class="row h-100">
+    <div class="col-6 mx-auto my-auto">
+      <div class="card border-primary">
+        <div class="card-body ">
+          <form action="/client/new_tweet" method="POST">
+            {% for field in form %} {% csrf_token %}
+            <h5 class="card-title text-primary text-center">{{ field.label_tag }}</h5>
+            <div class="row">
+              <div class="col-9">
+                {{field}}
+              </div>
+              <button class="btn btn-primary col mr-3">Tweet</button>
+            </div>
+            {% endfor %}
+          </form>
+        </div>
+        {% if request.method == 'POST' %}
+        <div class="card-footer text-center bg-transparent border-primary">
+          <p class="card-text">
+            <span class="badge badge-primary">{{ msg }}</span> : {{ tweet }}
+          </p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
