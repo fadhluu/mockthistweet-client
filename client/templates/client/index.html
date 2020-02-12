@@ -2,22 +2,12 @@
 
 <div class="container">
   <div class="row h-100">
-    <div class="col-4 mx-auto my-auto">
-      <div class="card">
-        <div class="card-body">
-          <form action="/client/new_tweet" method="POST">
-            {% for field in form %}
-            {% csrf_token %}
-            <div class="form-group">
-              <label>{{field.label_tag}}</label>
-              {{field}}
-            </div>
-            {% endfor %}
-          </form>
-        </div>
-      </div>
-      <div class="card bg-primary">
-        <div class="card-header text-white text-center">
+    <div class="col-12 mx-auto my-auto">
+      <h1 class="text-center text-primary">Simple Admin Dashboard</h1>
+    </div>
+    <div class="col-4 mx-auto">
+      <div class="card border-primary">
+        <div class="card-header text-white text-center bg-primary">
           {{user_profile.name}} {{user_profile.screen_name}}
         </div>
         <div class="card-body text-center">
@@ -25,12 +15,20 @@
             <img src="{{user_profile.profile_image_url}}" class="card-img-top"
               style="border-radius: 100%; width: 150px" />
           </div>
-          <p class="card-text text-white">{{user_profile.description}}</p>
+          <p class="card-text">{{user_profile.description}}</p>
         </div>
+        <ul class="list-group list-group-flush text-center">
+          <li class="list-group-item">
+            <a href="#" class="btn btn-primary ">Profile</a>
+            <a href="#" class="btn btn-success ">New Tweet</a>
+            <a href="#" class="btn btn-danger ">Block User</a>
+          </li>
+          <li class="list-group-item">
+            <a class="btn btn-primary" href="#" role="button">Follower <span class="badge badge-light">40</span></a>
+            <a class="btn btn-info" href="#" role="button">Total Tweets <span class="badge badge-light">40</span></a>
+          </li>
+        </ul>
       </div>
-    </div>
-    <div class="col-12">
-      <h1 class="text-center text-primary">Coming Soon</h1>
     </div>
   </div>
 </div>
